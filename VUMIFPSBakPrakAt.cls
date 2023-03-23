@@ -55,12 +55,11 @@
 % Informacijos tituliniame puslapyje kintamieji
 \newcommand{\university}[1]{\def\@university{#1}}
 \newcommand{\faculty}[1]{\def\@faculty{#1}}
-\newcommand{\papertype}[1]{\def\@papertype{#1}}
 \newcommand{\department}[1]{\def\@department{#1}}
-\newcommand{\supervisor}[1]{\def\@supervisor{#1}}
-\newcommand{\reviewer}[1]{\def\@reviewer{#1}}
 \newcommand{\status}[1]{\def\@status{#1}}
-\newcommand{\addsignatureplaces}{\def\@addsignatureplaces}
+\newcommand{\PracticeOrganization}[1]{\def\@PracticeOrganization{#1}}
+\newcommand{\OrganizationPracticeSupervisor}[1]{\def\@OrganizationPracticeSupervisor{#1}}
+\newcommand{\UniversityPracticeSupervisor}[1]{\def\@UniversityPracticeSupervisor{#1}}
 
 % Pirmos eilutės paragrafe atitraukimas 1 cm
 \setlength{\parindent}{1cm}
@@ -121,15 +120,11 @@
 % -------------------------------
 \newcommand{\@textunder}[1]{%
     \parbox[t]{2.5cm}{%
-        \makebox[2.5cm]{\raisebox{-0.9ex}{\small{(#1)}}}%
+        \makebox[2.5cm]{\raisebox{-1.3ex}{\small{(#1)}}}%
     }
 }
 
-\newcommand{\@signatureplace}{%
-    % Jeigu nenorima įdėti vietų parašams,
-    % teksto išdėstymas neturėtų smarkiai keistis
-    \@ifundefined{@addsignatureplaces}{\qquad}{\@textunder{parašas}}%
-}
+\newcommand{\@signatureplace}{\@textunder{parašas}}
 
 \newcommand{\checkifdefined}[2]{%
     % Patikriname, ar visa reikalinga informacija tituliniam puslapiui
@@ -145,12 +140,6 @@
     {Tituliniame puslapyje nenurodytas fakultetas (komanda \protect\faculty)}
   \checkifdefined{@department}%
     {Tituliniame puslapyje nenurodyta studijų programa (komanda \protect\department)}
-  \checkifdefined{@author}%
-    {Tituliniame puslapyje nenurodytas darbo autorius (komanda \protect\author)}
-  \checkifdefined{@supervisor}%
-    {Tituliniame puslapyje nenurodytas darbo vadovas (komanda \protect\supervisor)}
-  \checkifdefined{@reviewer}%
-    {Tituliniame puslapyje nenurodytas darbo recenzentas (komanda \protect\reviewer)}
   % Specialiai pašaliname titulinio puslapio numerį (nors jo ir šiaip nėra),
   % kad nerodytų įspėjimo dėl pakartotinai naudojamo 1 puslapio numerio
   \pagenumbering{gobble}%
@@ -165,12 +154,16 @@
   \end{center}
      \vskip 3cm
      \begin{flushright}
-        \large
+        %\large
         \singlespacing
         {\begin{tabular}[t]{l l}%
-        \bigskip Atliko: &\; \@author \hfill \@signatureplace \\
-        \bigskip Darbo vadovas: &\; \@supervisor \hfill  \@signatureplace \\
-        Darbo recenzentas: &\; \@reviewer \hfill \@signatureplace
+        \bigskip Praktiką atliko: &\; \@author \hfill \@signatureplace \\
+        &\; \@status \\
+        \bigskip Praktikos institucija: &\; \@PracticeOrganization \\
+        \bigskip Organizacijos praktikos vadovas: &\; \@OrganizationPracticeSupervisor \\
+        \bigskip Organizacijos praktikos vadovo įvertinimas: &\; \@textunder{įvertinimas, parašas} \\
+        \bigskip Universiteto praktikos vadovas: &\; \@UniversityPracticeSupervisor \\
+        &\; \@signatureplace
         \end{tabular} \par}%
      \end{flushright}
   \vfill
