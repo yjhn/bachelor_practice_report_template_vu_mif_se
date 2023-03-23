@@ -153,19 +153,20 @@
      {\singlespacing \large{\MakeUppercase{\@title}} \par}
   \end{center}
      \vskip 3cm
-     \begin{flushright}
+     \begin{flushleft}
         %\large
         \singlespacing
-        {\begin{tabular}[t]{l l}%
-        \bigskip Praktiką atliko: &\; \@author \hfill \@signatureplace \\
-        &\; \@status \\
-        \bigskip Praktikos institucija: &\; \@PracticeOrganization \\
-        \bigskip Organizacijos praktikos vadovas: &\; \@OrganizationPracticeSupervisor \\
-        \bigskip Organizacijos praktikos vadovo įvertinimas: &\; \@textunder{įvertinimas, parašas} \\
-        \bigskip Universiteto praktikos vadovas: &\; \@UniversityPracticeSupervisor \\
-        &\; \@signatureplace
-        \end{tabular} \par}%
-     \end{flushright}
+        {%\begin{tabular}[t]{l l}%
+        \bigskip Praktiką atliko: \quad \@author \qquad \@signatureplace \par
+        \hspace{10em} \@status \\
+        \bigskip Praktikos institucija: \quad \@PracticeOrganization \\
+        \bigskip Organizacijos praktikos vadovas: \quad \@OrganizationPracticeSupervisor \\
+        \bigskip Organizacijos praktikos vadovo įvertinimas: \quad \@textunder{įvertinimas, parašas} \\
+        \bigskip Universiteto praktikos vadovas: \quad \@UniversityPracticeSupervisor \par
+        \hspace{10em} \@signatureplace
+        %\end{tabular} \par}%
+        \par}%
+     \end{flushleft}
   \vfill
   \begin{center}
     \large{\@date}%
