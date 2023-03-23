@@ -1,8 +1,8 @@
-%% VUMIFPSbakalaurinis.cls – „Tik svajotojai-romantikai gali pagerinti nepakeičiamą pasaulį“
-%% Created by   „Atviras Kodas Lietuvai“  2015
-%
-%% Latest version available here: https://github.com/LIKS/bachelor_thesis_template_vu_mif_se
-%% Any suggestions or contributions are welcome!  Also see: https://latex.liks.lt!
+%% VUMIFPSBakPrakAt.cls
+%% Created by Andrius Pukšta, based on VUMIFPSbakalaurinis.cls available at:
+%% https://github.com/LIKS/bachelor_thesis_template_vu_mif_se
+%% Latest version available here: https://github.com/yjhn/bachelor_practice_report_template_vu_mif_se
+%% Any suggestions or contributions are welcome!
 %
 %% License CC BY 4.0 (see more at http://creativecommons.org/licenses/by/4.0/)
 % You are free to (a) share - copy and redistribute the material in any medium
@@ -11,10 +11,10 @@
 % link to the license, and indicate if changes were made.
 
 
-% Bakalauro baigiamojo darbo apiforminimas pagal Vilniaus universiteto
+% Bakalauro praktikos ataskaitos apiforminimas pagal Vilniaus universiteto
 % Matematikos ir informatikos fakulteto Programų sistemų katedros reikalavimus
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{VUMIFPSbakalaurinis}[2023/03/12 1.4.1 VU MIF SE bachelor thesis class]
+\ProvidesClass{VUMIFPSBakPrakAt}[2023/03/23 0.1 VU MIF SE bachelor practice report class]
 \LoadClass[12pt, a4paper]{article}
 \RequirePackage{LTPlius}  % Nustatymų sulietuvinimas
 \RequirePackage{fontspec} % Šrifto pasirinkimui
@@ -57,12 +57,9 @@
 \newcommand{\faculty}[1]{\def\@faculty{#1}}
 \newcommand{\papertype}[1]{\def\@papertype{#1}}
 \newcommand{\department}[1]{\def\@department{#1}}
-\newcommand{\institute}[1]{\def\@institute{#1}}
 \newcommand{\supervisor}[1]{\def\@supervisor{#1}}
 \newcommand{\reviewer}[1]{\def\@reviewer{#1}}
 \newcommand{\status}[1]{\def\@status{#1}}
-\newcommand{\titleineng}[1]{\def\@titleineng{#1}}
-\newcommand{\secondauthor}[1]{\def\@secondauthor{#1}}
 \newcommand{\addsignatureplaces}{\def\@addsignatureplaces}
 
 % Pirmos eilutės paragrafe atitraukimas 1 cm
@@ -122,13 +119,16 @@
 % -------------------------------
 % Titulinio puslapio formatavimas
 % -------------------------------
+\newcommand{\@textunder}[1]{%
+    \parbox[t]{2.5cm}{%
+        \makebox[2.5cm]{\raisebox{-0.9ex}{\small{(#1)}}}%
+    }
+}
+
 \newcommand{\@signatureplace}{%
     % Jeigu nenorima įdėti vietų parašams,
     % teksto išdėstymas neturėtų smarkiai keistis
-    \@ifundefined{@addsignatureplaces}{\qquad}{%
-        \parbox[t]{2.5cm}{%
-            \makebox[2.5cm]{\raisebox{-0.5ex}{\scriptsize{(parašas)}}}%
-        }}
+    \@ifundefined{@addsignatureplaces}{\qquad}{\@textunder{parašas}}%
 }
 
 \newcommand{\checkifdefined}[2]{%
@@ -145,8 +145,6 @@
     {Tituliniame puslapyje nenurodytas fakultetas (komanda \protect\faculty)}
   \checkifdefined{@department}%
     {Tituliniame puslapyje nenurodyta studijų programa (komanda \protect\department)}
-  \checkifdefined{@papertype}%
-    {Tituliniame puslapyje nenurodytas darbo tipas (komanda \protect\papertype)}
   \checkifdefined{@author}%
     {Tituliniame puslapyje nenurodytas darbo autorius (komanda \protect\author)}
   \checkifdefined{@supervisor}%
@@ -160,19 +158,11 @@
   \begin{center}
       {\setstretch{1.3}\large \MakeUppercase{\@university} \\
          \MakeUppercase{\@faculty} \\
-         \ifdefined\@institute
-             \MakeUppercase{\@institute} \\
-         \fi
          \MakeUppercase{\@department}\par }
 
-     \null\vfil
      \vskip 2.5cm
-     {\singlespacing \LARGE \textbf{\@title} \par}
-     {\singlespacing \Large \textbf{\@titleineng} \par}%
-     \vskip 0.8cm
-     {\large \@papertype}%
+     {\singlespacing \large{\MakeUppercase{\@title}} \par}
   \end{center}
-  \@ifundefined{@secondauthor}{
      \vskip 3cm
      \begin{flushright}
         \large
@@ -183,19 +173,6 @@
         Darbo recenzentas: &\; \@reviewer \hfill \@signatureplace
         \end{tabular} \par}%
      \end{flushright}
-  }{
-     \vskip 2.8cm
-     \begin{flushright}
-        \large
-        \singlespacing
-        {\begin{tabular}[t]{l l}%
-        \bigskip Atliko: &\; \@author \hfill \@signatureplace \\
-        \bigskip &\; \@secondauthor \hfill \@signatureplace \\
-        \bigskip Darbo vadovas: &\; \@supervisor \hfill  \@signatureplace \\
-        Darbo recenzentas: &\; \@reviewer \hfill \@signatureplace
-        \end{tabular} \par}%
-     \end{flushright}
-  }
   \vfill
   \begin{center}
     \large{\@date}%
