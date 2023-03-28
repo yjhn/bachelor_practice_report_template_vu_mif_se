@@ -120,7 +120,7 @@
 % -------------------------------
 \newcommand{\@textunder}[1]{%
     \parbox[t]{2.5cm}{%
-        \makebox[2.5cm]{\raisebox{-1.3ex}{\small{(#1)}}}%
+        \makebox[2.5cm]{\raisebox{-1.4ex}{\small{(#1)}}}%
     }
 }
 
@@ -154,22 +154,17 @@
   \end{center}
      \vskip 3cm
      \begin{flushleft}
-        %\large
         \singlespacing
-        {%\begin{tabular}[t]{l l}%
-        \bigskip Praktiką atliko: \quad \@author \qquad \@signatureplace \par
-        \hspace{10em} \@status \\
-        \bigskip Praktikos institucija: \quad \@PracticeOrganization \\
-        \bigskip Organizacijos praktikos vadovas: \quad \@OrganizationPracticeSupervisor \\
-        \bigskip Organizacijos praktikos vadovo įvertinimas: \quad \@textunder{įvertinimas, parašas} \\
-        \bigskip Universiteto praktikos vadovas: \quad \@UniversityPracticeSupervisor \par
-        \hspace{10em} \@signatureplace
-        %\end{tabular} \par}%
-        \par}%
+        \bigskip Praktiką atliko: \quad \textbf{\@author} \hspace{7em} \@signatureplace \par
+        \hspace{7.3em} \textbf{\@status} \\
+        \bigskip Praktikos institucija: \quad \textbf{\@PracticeOrganization} \\
+        \bigskip Organizacijos praktikos vadovas: \quad \textbf{\@OrganizationPracticeSupervisor} \\
+        \bigskip Organizacijos praktikos vadovo įvertinimas: \hspace{6em} \@textunder{įvertinimas, parašas} \\
+        \bigskip Universiteto praktikos vadovas: \quad \textbf{\@UniversityPracticeSupervisor} \hspace{1em} \@signatureplace
      \end{flushleft}
   \vfill
   \begin{center}
-    \large{\@date}%
+    \@date%
   \end{center}
   \vskip 0.4cm
   \@thanks
