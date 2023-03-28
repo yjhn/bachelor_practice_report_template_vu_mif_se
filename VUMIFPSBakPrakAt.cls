@@ -155,7 +155,7 @@
     \vskip 3cm
     \begin{flushleft}
       \singlespacing
-      \bigskip Praktiką atliko: \quad \textbf{\@author} \hspace{7em} \@signatureplace \par
+      \bigskip Praktiką atliko: \quad \textbf{\@author} \hspace{8em} \@signatureplace \par
       \hspace{7.3em} \textbf{\@status} \\
       \bigskip Praktikos institucija: \quad \textbf{\@PracticeOrganization} \\
       \bigskip Organizacijos praktikos vadovas: \quad \textbf{\@OrganizationPracticeSupervisor} \\
