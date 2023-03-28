@@ -279,7 +279,7 @@
         {\normalfont\Large\bfseries}%
 }
 
-% Priedo sekcijų formatavimas turiniui
+% Priedo sekcijų formatavimas
 \renewcommand{\appendix}{%
     \@ifundefined{@firstappendix}{%
         \newcounter{appendixcounter}%
@@ -308,7 +308,6 @@
     \vspace{\baselineskip}%
     \footnotesize
 }
-
 
 % Apibrėžiame ketvirto lygio skyrius
 \newcommand{\subsubsubsection}{\subsubparagraph}
