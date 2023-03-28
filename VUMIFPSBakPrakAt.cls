@@ -14,7 +14,7 @@
 % Bakalauro praktikos ataskaitos apiforminimas pagal Vilniaus universiteto
 % Matematikos ir informatikos fakulteto Programų sistemų katedros reikalavimus
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{VUMIFPSBakPrakAt}[2023/03/23 0.1 VU MIF SE bachelor practice report class]
+\ProvidesClass{VUMIFPSBakPrakAt}[2023/03/23 1.0 VU MIF SE bachelor practice report class]
 \LoadClass[12pt, a4paper]{article}
 \RequirePackage{LTPlius}  % Nustatymų sulietuvinimas
 \RequirePackage{fontspec} % Šrifto pasirinkimui
@@ -133,6 +133,11 @@
     \@ifundefined{#1}{\PackageError{VUMIF}{#2}{Add the missing command}}%
 }
 
+% #1 is spacing on the left, #2 is ruler width.
+\newcommand{\@addunderline}[2]{%
+    \nointerlineskip\moveright#1\vbox{\hrule width #2 height 0.5pt}%\nointerlineskip
+}
+
 \renewcommand\maketitle{\begin{titlepage}%
   \checkifdefined{@university}%
     {Tituliniame puslapyje nenurodytas universitetas (komanda \protect\university)}
@@ -154,13 +159,18 @@
   \end{center}
     \vskip 3cm
     \begin{flushleft}
-      \singlespacing
-      \bigskip Praktiką atliko: \quad \textbf{\@author} \hspace{8em} \@signatureplace \par
-      \hspace{7.3em} \textbf{\@status} \\
-      \bigskip Praktikos institucija: \quad \textbf{\@PracticeOrganization} \\
-      \bigskip Organizacijos praktikos vadovas: \quad \textbf{\@OrganizationPracticeSupervisor} \\
-      \bigskip Organizacijos praktikos vadovo įvertinimas: \hspace{6em} \@textunder{įvertinimas, parašas} \\
-      \bigskip Universiteto praktikos vadovas: \quad \textbf{\@UniversityPracticeSupervisor} \hspace{1em} \@signatureplace
+      \qquad Praktiką atliko: \quad \textbf{\@author} \hspace{8em} \@signatureplace \par
+      \hspace{9.3em} \textbf{\@status} \\
+      \vskip 0.8cm
+      \qquad Praktikos institucija: \quad \textbf{\@PracticeOrganization} \\
+      %\@addunderline{4.5cm}{300pt}
+      \vskip 0.8cm
+      \qquad Organizacijos praktikos vadovas: \quad \textbf{\@OrganizationPracticeSupervisor} \\
+      %\@addunderline{4.5cm}{300pt}
+      \vskip 0.8cm
+      \qquad Organizacijos praktikos vadovo įvertinimas: \hspace{6em} \@textunder{įvertinimas, parašas} \\
+      \vskip 0.8cm
+      \qquad Universiteto praktikos vadovas: \quad \textbf{\@UniversityPracticeSupervisor} \hspace{0.5em} \@signatureplace
     \end{flushleft}
     \vskip 1cm
     \begin{flushright}
@@ -271,24 +281,22 @@
 
 % Priedo sekcijų formatavimas turiniui
 \renewcommand{\appendix}{%
-    \renewcommand{\section}{%
+    \@ifundefined{@firstappendix}{%
+        \newcounter{appendixcounter}%
+        \sectionnonum{Priedai}%
+        \newcommand{\@firstappendix}{}%
+        \newcommand{\@appendix}{nr. \arabic{appendixcounter}}%
+    }{%
         \cleardoublepage%
-        \secdef\@Appendix\@sAppendix%
     }%
-    \setcounter{section}{0}%
-    \renewcommand{\thesection}{nr. \arabic{section}}%
-    % Pataisymas, kad PDF žymėse pridėtų kaip atskirą skyrių
-    % (be šio pataisymo prideda kaip praeito skyriaus poskyrį)
-    \phantomsection%
-    % Pridedame į turinį
-    \addcontentsline{toc}{section}{Priedai}%
+    \secdef\@Appendix\@sAppendix%
 }
 
 \def\@Appendix[#1]#2{%
-    \refstepcounter{section}%
+    \refstepcounter{appendixcounter}%
     \addcontentsline{toc}{subsection}%
-        {\arabic{section} priedas.~#2}%
-    {\large\bfseries\appendixname\ \thesection\par
+        {\arabic{appendixcounter} priedas.~#2}%
+    {\large\bfseries\appendixname\ \@appendix\par
      #2\par}% \nohyphens\centering#2\par}%
     \sectionmark{#1}\vspace{\baselineskip}%
     \footnotesize%
@@ -300,6 +308,7 @@
     \vspace{\baselineskip}%
     \footnotesize
 }
+
 
 % Apibrėžiame ketvirto lygio skyrius
 \newcommand{\subsubsubsection}{\subsubparagraph}
