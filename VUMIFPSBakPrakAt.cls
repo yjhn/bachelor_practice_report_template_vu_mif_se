@@ -152,16 +152,25 @@
      \vskip 2.5cm
      {\singlespacing \large{\MakeUppercase{\@title}} \par}
   \end{center}
-     \vskip 3cm
-     \begin{flushleft}
-        \singlespacing
-        \bigskip Praktiką atliko: \quad \textbf{\@author} \hspace{7em} \@signatureplace \par
-        \hspace{7.3em} \textbf{\@status} \\
-        \bigskip Praktikos institucija: \quad \textbf{\@PracticeOrganization} \\
-        \bigskip Organizacijos praktikos vadovas: \quad \textbf{\@OrganizationPracticeSupervisor} \\
-        \bigskip Organizacijos praktikos vadovo įvertinimas: \hspace{6em} \@textunder{įvertinimas, parašas} \\
-        \bigskip Universiteto praktikos vadovas: \quad \textbf{\@UniversityPracticeSupervisor} \hspace{1em} \@signatureplace
-     \end{flushleft}
+    \vskip 3cm
+    \begin{flushleft}
+      \singlespacing
+      \bigskip Praktiką atliko: \quad \textbf{\@author} \hspace{7em} \@signatureplace \par
+      \hspace{7.3em} \textbf{\@status} \\
+      \bigskip Praktikos institucija: \quad \textbf{\@PracticeOrganization} \\
+      \bigskip Organizacijos praktikos vadovas: \quad \textbf{\@OrganizationPracticeSupervisor} \\
+      \bigskip Organizacijos praktikos vadovo įvertinimas: \hspace{6em} \@textunder{įvertinimas, parašas} \\
+      \bigskip Universiteto praktikos vadovas: \quad \textbf{\@UniversityPracticeSupervisor} \hspace{1em} \@signatureplace
+    \end{flushleft}
+    \vskip 1cm
+    \begin{flushright}
+        \begin{tabular}[t]{l c}
+            \small{Ataskaitos įteikimo data} & \underline{\hspace{11em}} \\
+            \small{Registracijos Nr.} & \underline{\hspace{11em}} \\
+            \small{Įvertinimas} & \underline{\hspace{11em}} \\
+            & \small{(data, įvertinimas, parašas)}
+        \end{tabular}
+    \end{flushright}
   \vfill
   \begin{center}
     \@date%
