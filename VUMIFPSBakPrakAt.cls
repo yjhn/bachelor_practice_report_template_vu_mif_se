@@ -280,7 +280,7 @@
         {\normalfont\Large\bfseries}%
 }
 
-% Priedo sekcijų formatavimas
+% Priedų formatavimas
 \renewcommand{\appendix}{%
     \@ifundefined{@firstappendix}{%
         \newcounter{appendixcounter}%
