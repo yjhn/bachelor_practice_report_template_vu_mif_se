@@ -159,17 +159,18 @@
   \end{center}
     \vskip 3cm
     \begin{flushleft}
-      \qquad Praktiką atliko: \quad \textbf{\@author} \hspace{8em} \@signatureplace \par
+      \qquad Praktiką atliko: \quad \textbf{\@author} \hspace{\fill} \@signatureplace \hspace{2cm} \par
       \hspace{9.3em} \textbf{\@status} \\
-      \vskip 0.8cm
+      \vspace{0.8cm}
       \qquad Praktikos institucija: \quad \textbf{\@PracticeOrganization} \\
       %\@addunderline{4.5cm}{300pt}
-      \vskip 0.8cm
+      \vspace{0.8cm}
       \qquad Organizacijos praktikos vadovas: \quad \textbf{\@OrganizationPracticeSupervisor} \\
       %\@addunderline{4.5cm}{300pt}
-      \vskip 0.8cm
-      \qquad Organizacijos praktikos vadovo įvertinimas: \hspace{6em} \@textunder{įvertinimas, parašas} \\
-      \vskip 0.8cm
+      \vspace{0.8cm}
+      \qquad Organizacijos praktikos vadovo įvertinimas: \hspace{0.3cm}\underline{\hspace{7cm}} \\
+      \hspace{10.7cm} {\small (įvertinimas, parašas)} \\
+      \vspace{0.3cm}
       \qquad Universiteto praktikos vadovas: \quad \textbf{\@UniversityPracticeSupervisor} \hspace{0.5em} \@signatureplace
     \end{flushleft}
     \vskip 1cm
