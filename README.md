@@ -38,11 +38,11 @@ Instaliuoti [MacTex](https://tug.org/mactex).
 Įvykdyti vieną iš:  
 - `make`  
 - `make pdf`  
-- `latexmk --lualatex bakalaurinis.tex`
+- `latexmk --lualatex ataskaita.tex`
 
 ### Windows
 
-Įvykdyti `latexmk --lualatex bakalaurinis.tex`.
+Įvykdyti `latexmk --lualatex ataskaita.tex`.
 
 ## Kitos naudingos komandos
 
