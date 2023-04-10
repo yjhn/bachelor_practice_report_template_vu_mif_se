@@ -38,11 +38,11 @@ Instaliuoti [MacTex](https://tug.org/mactex).
 Įvykdyti vieną iš:  
 - `make`  
 - `make pdf`  
-- `latexmk --lualatex ataskaita.tex`
+- `latexmk -lualatex ataskaita.tex`
 
 ### Windows
 
-Įvykdyti `latexmk --lualatex ataskaita.tex`.
+Įvykdyti `latexmk -lualatex ataskaita.tex`.
 
 ## Kitos naudingos komandos
 
