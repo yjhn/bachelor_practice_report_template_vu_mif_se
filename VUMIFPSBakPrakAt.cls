@@ -162,11 +162,13 @@
     \begin{flushright}
         \large
         \singlespacing
-        {%\disablehyphenation%
+        % Neleidžiame žodžių išskirstyti gabalais ir padaryti didelių tarpų tarp žodžių
+        % (žr. https://tex.stackexchange.com/a/603629)
+        {\disablehyphenation \fontdimen3\font=0pt%
         \begin{tabular}[t]{l p{8cm}}%
         \bigskip Praktiką atliko: & \@author \hspace*{\fill} \\
         \bigskip Praktikos institucija: & \@PracticeOrganization \hspace*{\fill} \\
-        \bigskip Organizacijos praktikos vadovas: & \@OrganizationPracticeSupervisorRole{}
+        \bigskip Organizacijos praktikos vadovas: & \@OrganizationPracticeSupervisorRole{} %
             \mbox{\@OrganizationPracticeSupervisorName} \hspace*{\fill} \\
         \bigskip Universiteto praktikos vadovas: & \@UniversityPracticeSupervisor \hspace*{\fill}
         \end{tabular} \par}%
