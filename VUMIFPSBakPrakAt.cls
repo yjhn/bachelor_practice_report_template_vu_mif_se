@@ -164,7 +164,8 @@
         \singlespacing
         % Neleidžiame žodžių išskirstyti gabalais ir padaryti didelių tarpų tarp žodžių
         % (žr. https://tex.stackexchange.com/a/603629)
-        {\disablehyphenation \fontdimen3\font=0pt%
+        % Taip pat nutildome pranešimus dėl nepilnų eilučių (underfull hbox)
+        {\disablehyphenation \fontdimen3\font=0pt \hbadness=10000%
         \begin{tabular}[t]{l p{8cm}}%
         \bigskip Praktiką atliko: & \@author \hspace*{\fill} \\
         \bigskip Praktikos institucija: & \@PracticeOrganization \hspace*{\fill} \\
