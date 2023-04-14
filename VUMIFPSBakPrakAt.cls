@@ -58,7 +58,8 @@
 \newcommand{\department}[1]{\def\@department{#1}}
 \newcommand{\status}[1]{\def\@status{#1}}
 \newcommand{\PracticeOrganization}[1]{\def\@PracticeOrganization{#1}}
-\newcommand{\OrganizationPracticeSupervisor}[1]{\def\@OrganizationPracticeSupervisor{#1}}
+\newcommand{\OrganizationPracticeSupervisorName}[1]{\def\@OrganizationPracticeSupervisorName{#1}}
+\newcommand{\OrganizationPracticeSupervisorRole}[1]{\def\@OrganizationPracticeSupervisorRole{#1}}
 \newcommand{\UniversityPracticeSupervisor}[1]{\def\@UniversityPracticeSupervisor{#1}}
 
 % Pirmos eilutės paragrafe atitraukimas 1 cm
@@ -161,11 +162,13 @@
     \begin{flushright}
         \large
         \singlespacing
-        {\begin{tabular}[t]{l l}%
-        \bigskip Praktiką atliko: &\; \@author \hspace*{\fill} \\
-        \bigskip Praktikos institucija: &\; \@PracticeOrganization \hspace*{\fill} \\
-        \bigskip Organizacijos praktikos vadovas: &\; \@OrganizationPracticeSupervisor \hspace*{\fill} \\
-        \bigskip Universiteto praktikos vadovas: &\; \@UniversityPracticeSupervisor \hspace*{\fill}
+        {%\disablehyphenation%
+        \begin{tabular}[t]{l p{8cm}}%
+        \bigskip Praktiką atliko: & \@author \hspace*{\fill} \\
+        \bigskip Praktikos institucija: & \@PracticeOrganization \hspace*{\fill} \\
+        \bigskip Organizacijos praktikos vadovas: & \@OrganizationPracticeSupervisorRole{}
+            \mbox{\@OrganizationPracticeSupervisorName} \hspace*{\fill} \\
+        \bigskip Universiteto praktikos vadovas: & \@UniversityPracticeSupervisor \hspace*{\fill}
         \end{tabular} \par}%
     \end{flushright}
   \vfill
