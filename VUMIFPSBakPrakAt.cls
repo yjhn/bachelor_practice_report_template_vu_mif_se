@@ -37,7 +37,7 @@
     top=2cm,
     right=1.5cm,
     bottom=2cm,
-    footskip=0.6cm,
+    footskip=0.7cm,
 ]{geometry}  % Lapo paraštės
 \sloppy  % Tolygiai paskirsto tekstą nuo kairės iki dešinės paraštės
 \RequirePackage[titles]{tocloft} % Turinio eilučių išlygiavimo nustatymui
@@ -335,9 +335,12 @@
 \let\oldfootnote\footnote
 \renewcommand{\footnote}[1]{\oldfootnote{\onehalfspacing #1}}
 
-% Panaikinami dvigubi tarpai tarp sąrašo elementų
+% Panaikiname dvigubus tarpus tarp sąrašo elementų,
+% jų įtrauką suvienodiname su pastraipos pirmos eilutės įtrauka
 \RequirePackage{enumitem}
-\setlist{nosep}
+\setlist{nosep,leftmargin=\parindent}
+% Pirmo lygio sąrašui pridedame tarpus iš viršaus ir apačios
+\setlist[1]{nosep,topsep=\medskipamount,leftmargin=\parindent}
 
 % float paketas turi būti užkraunamas anksčiau nei hyperref
 \RequirePackage{float}
