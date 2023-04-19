@@ -85,7 +85,7 @@
 \DefineBibliographyStrings{lithuanian}{%
     % Literatūros sąrašas.
     references = {Šaltiniai},
-    in = {},
+    in = {iš},
     % Terminai, vartojami biblatex-iso690 bibliografijos stiliuje.
     % Žr. https://github.com/michal-h21/biblatex-iso690/wiki/Translation-Guideline
     urlalso = {prieiga per internetą},
@@ -336,11 +336,12 @@
 \renewcommand{\footnote}[1]{\oldfootnote{\onehalfspacing #1}}
 
 % Panaikiname dvigubus tarpus tarp sąrašo elementų,
-% jų įtrauką suvienodiname su pastraipos pirmos eilutės įtrauka
+% jų įtrauką suvienodiname su aplinkinio teksto įtrauka
 \RequirePackage{enumitem}
-\setlist{nosep,leftmargin=\parindent}
-% Pirmo lygio sąrašui pridedame tarpus iš viršaus ir apačios
-\setlist[1]{nosep,topsep=\medskipamount,leftmargin=\parindent}
+\setlist{nosep, leftmargin=*}
+% Pirmo lygio sąrašui pridedame tarpus iš viršaus ir apačios,
+% jų įtrauką suvienodiname su pastraipos pirmos eilutės įtrauka
+\setlist[1]{topsep=0.2cm, labelindent=\parindent}
 
 % float paketas turi būti užkraunamas anksčiau nei hyperref
 \RequirePackage{float}
