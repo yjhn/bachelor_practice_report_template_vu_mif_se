@@ -69,13 +69,14 @@
 \RequirePackage[
     alldates=iso,
     seconds=true,
-    autolang=none,
+    % pakeičiame žodžių skaidymą skiemenimis, kai langid nėra lithuanian
+    autolang=hyphen,
     backend=biber,
     sortcites=true,
     sorting=anyt,
     giveninits=true,
     style=iso-alphabetic,
-    abbreviate=true,
+    abbreviate=false,
     minalphanames=3,
     maxalphanames=3,
     maxnames=9,
@@ -95,6 +96,11 @@
     online = {internetinis},
 }
 
+% Pliuso ženklas, kuris rodomas esant >3 autoriams, sumažinamas ir pakeliamas
+\renewcommand*{\labelalphaothers}{\textsuperscript{+}}
+
+% Biblatex-iso690 pakeitimai
+
 % Autorius rašomas kaip Vardas Pavardė, ne Pavardė, Vardas
 \DeclareNameAlias{default}{given-family}
 % Skirtukai tarp autorių padaromi kableliais
@@ -103,13 +109,25 @@
 % Nepaverčiame pavardžių didžiosiomis raidėmis
 \renewcommand{\familynameformat}[1]{#1}
 
-% Pliuso ženklas, kuris rodomas esant >3 autoriams, sumažinamas ir pakeliamas
-\renewcommand*{\labelalphaothers}{\textsuperscript{+}}
+% Padarome, kad nepridėtų [internetinis] prie šaltinių, turinčių
+% url lauką. Nukopijuota ir pakeista iš
+% https://github.com/michal-h21/biblatex-iso690/blob/7ae03dbdff1f187cfead57c5108a73a6b5021f68/iso.bbx#L721-L750
+\renewbibmacro*{medium-type}{%
+  \iffieldundef{howpublished}{}% Don't print anything
+    {\ifboolexpr{
+        test {\iffieldequalstr{howpublished}{online}}
+        and not test {\iftoggle{bbx:url}}
+        and not test {\ifentrytype{online}}
+      }
+        {}% Don't print 'howpublished' field
+        {\printfield{howpublished}}}%
+}
 
 % Nutildome įspėjimus dėl neegzistuojančių failų.
 \usepackage{silence}
 \WarningFilter{biblatex}{File 'american-iso.lbx' not found!}
 \WarningFilter{biblatex}{File 'lithuanian-iso.lbx' not found!}
+
 
 % TODO: pašalinti csquotes.cfg failą 2025 metais, nes csquotes
 % paketas pridėjo lietuvišką kabučių stilių 2023-01-24, tad nebereikės
@@ -156,7 +174,7 @@
          \MakeUppercase{\@department}\par }
 
      \vskip 4cm
-     {\singlespacing \large{\MakeUppercase{\@title}} \par}
+     {\singlespacing \large\MakeUppercase{\@title}}\par
   \end{center}
     \vskip 4cm
     \begin{flushright}
@@ -368,7 +386,7 @@
     \@ifundefined{@secondauthor}{
         \hypersetup{pdfauthor = {\@author}}
     }{
-        \hypersetup{pdfauthor = {\@author\ and \@secondauthor}}
+        \hypersetup{pdfauthor = {\@author\ ir \@secondauthor}}
     }
 }
 
