@@ -14,7 +14,7 @@
 % Bakalauro praktikos ataskaitos apiforminimas pagal Vilniaus universiteto
 % Matematikos ir informatikos fakulteto Programų sistemų katedros reikalavimus
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{VUMIFPSBakPrakAt}[2023/03/23 1.0 VU MIF SE bachelor practice report class]
+\ProvidesClass{VUMIFPSBakPrakAt}[2023/04/21 1.1 VU MIF SE bachelor practice report class]
 \LoadClass[12pt, a4paper]{article}
 \RequirePackage{LTPlius}  % Nustatymų sulietuvinimas
 \RequirePackage{fontspec} % Šrifto pasirinkimui
@@ -149,7 +149,7 @@
     % Patikriname, ar visa reikalinga informacija tituliniam puslapiui
     % buvo nurodyta. #1 yra tikrinama reikšmė (be \ priekyje),
     % #2 - klaidos pranešimas.
-    \@ifundefined{#1}{\PackageError{VUMIF}{#2}{Add the missing command}}%
+    \@ifundefined{#1}{\ClassError{VUMIF}{#2}{Add the missing command}}%
 }
 
 % #1 is spacing on the left, #2 is ruler width.
@@ -185,9 +185,9 @@
         % Taip pat nutildome pranešimus dėl nepilnų eilučių (underfull hbox)
         {\disablehyphenation \fontdimen3\font=0pt \hbadness=10000%
         \begin{tabular}[t]{l p{8cm}}%
-        \bigskip Praktiką atliko: & \@author \hspace*{\fill} \\
+        \bigskip Praktiką atliko: & \@author\ \mbox{\@status} \hspace*{\fill} \\
         \bigskip Praktikos institucija: & \@PracticeOrganization \hspace*{\fill} \\
-        \bigskip Organizacijos praktikos vadovas: & \@OrganizationPracticeSupervisorRole{} %
+        \bigskip Organizacijos praktikos vadovas: & \@OrganizationPracticeSupervisorRole\ %
             \mbox{\@OrganizationPracticeSupervisorName} \hspace*{\fill} \\
         \bigskip Universiteto praktikos vadovas: & \@UniversityPracticeSupervisor \hspace*{\fill}
         \end{tabular} \par}%
@@ -365,7 +365,11 @@
 \RequirePackage{float}
 
 % Nuorodos turinyje ir kitur padaromos aktyviomis
-\RequirePackage[hidelinks,linktoc=all]{hyperref}
+\RequirePackage[%
+    hidelinks,
+    linktoc=all,
+    pdflang=lt
+]{hyperref}
 
 % Pataisymas, kad veiktų kompiliavimas su LuaLaTeX.
 % TODO: galima pašalinti 2025 m., nes pataisymas jau yra
@@ -382,7 +386,10 @@
 
 % Nustatomas PDF pavadinimas ir autorius
 \AtBeginDocument{
-    \hypersetup{pdftitle = {\@title}}
+    \hypersetup{%
+        pdftitle = {\@title},
+        pdfsubject = {\@title}
+    }
     \@ifundefined{@secondauthor}{
         \hypersetup{pdfauthor = {\@author}}
     }{
