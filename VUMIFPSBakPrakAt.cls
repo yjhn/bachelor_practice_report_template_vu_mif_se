@@ -134,6 +134,8 @@
 % specialios konfigūracijos, kai nauja versija bus plačiai prieinama
 \RequirePackage[style=lithuanian]{csquotes}
 
+\RequirePackage[babel=true]{microtype}
+
 % -------------------------------
 % Titulinio puslapio formatavimas
 % -------------------------------
