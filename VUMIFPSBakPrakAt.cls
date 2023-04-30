@@ -134,8 +134,6 @@
 % specialios konfigūracijos, kai nauja versija bus plačiai prieinama
 \RequirePackage[style=lithuanian]{csquotes}
 
-\RequirePackage[babel=true]{microtype}
-
 % -------------------------------
 % Titulinio puslapio formatavimas
 % -------------------------------
@@ -419,3 +417,9 @@
 % Algoritmų numeracija turi sutapti su paveiksliukų
 \let\c@algorithm\c@figure
 \let\ftype@algorithm\ftype@figure
+
+% Komandos, skirtos pateikti angliškus terminų vertimus
+% Be skliaustų.
+\newcommand{\anglnb}[1]{angl.\ \textit{\textenglish{#1}}}
+% Su skliaustais.
+\newcommand{\angl}[1]{(\anglnb{#1})}
