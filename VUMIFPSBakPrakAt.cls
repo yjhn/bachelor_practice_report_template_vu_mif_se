@@ -14,7 +14,7 @@
 % Bakalauro praktikos ataskaitos apiforminimas pagal Vilniaus universiteto
 % Matematikos ir informatikos fakulteto Programų sistemų katedros reikalavimus
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{VUMIFPSBakPrakAt}[2023/04/21 1.1 VU MIF SE bachelor practice report class]
+\ProvidesClass{VUMIFPSBakPrakAt}[2023/04/30 1.2 VU MIF SE bachelor practice report class]
 \LoadClass[12pt, a4paper]{article}
 \RequirePackage{LTPlius}  % Nustatymų sulietuvinimas
 \RequirePackage{fontspec} % Šrifto pasirinkimui
