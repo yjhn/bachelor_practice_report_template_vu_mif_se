@@ -14,7 +14,7 @@
 % Bakalauro praktikos ataskaitos apiforminimas pagal Vilniaus universiteto
 % Matematikos ir informatikos fakulteto Programų sistemų katedros reikalavimus
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{VUMIFPSBakPrakAt}[2023/04/30 1.2 VU MIF SE bachelor practice report class]
+\ProvidesClass{VUMIFPSBakPrakAt}[2023/05/14 1.3 VU MIF SE bachelor practice report class]
 \LoadClass[12pt, a4paper]{article}
 \RequirePackage{LTPlius}  % Nustatymų sulietuvinimas
 \RequirePackage{fontspec} % Šrifto pasirinkimui
@@ -99,7 +99,24 @@
 % Pliuso ženklas, kuris rodomas esant >3 autoriams, sumažinamas ir pakeliamas
 \renewcommand*{\labelalphaothers}{\textsuperscript{+}}
 
+% Ignoruojame laukus, kurie padaro, kad URL būtų spausdinami nestandartiškai
+% (pvz. „Prieiga per internetą arXiv: <arXiv id>“ ir pan.)
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldset=eprint, null]
+      \step[fieldset=eprinttype, null]
+      \step[fieldset=eprintclass, null]
+    } 
+  }
+}
+
+
 % Biblatex-iso690 pakeitimai
+
+% DOI laukas turėtų spausdinti pilną URL, ne tik identifikatorių. Pakeista iš
+% https://github.com/michal-h21/biblatex-iso690/blob/7ae03dbdff1f187cfead57c5108a73a6b5021f68/iso.bbx#L377
+\DeclareFieldFormat{doi}{\addcolon\space\url{https://doi.org/#1}}
 
 % Autorius rašomas kaip Vardas Pavardė, ne Pavardė, Vardas
 \DeclareNameAlias{default}{given-family}
@@ -134,6 +151,8 @@
 % specialios konfigūracijos, kai nauja versija bus plačiai prieinama
 \RequirePackage[style=lithuanian]{csquotes}
 
+\RequirePackage[babel=true]{microtype}
+
 % -------------------------------
 % Titulinio puslapio formatavimas
 % -------------------------------
@@ -164,9 +183,6 @@
     {Tituliniame puslapyje nenurodytas fakultetas (komanda \protect\faculty)}
   \checkifdefined{@department}%
     {Tituliniame puslapyje nenurodyta studijų programa (komanda \protect\department)}
-  % Specialiai pašaliname titulinio puslapio numerį (nors jo ir šiaip nėra),
-  % kad nerodytų įspėjimo dėl pakartotinai naudojamo 1 puslapio numerio
-  \pagenumbering{gobble}%
   ~
   \begin{center}
       {\setstretch{1.3}\large \MakeUppercase{\@university} \\
@@ -199,8 +215,8 @@
   \vskip 0.4cm
   \@thanks
   \end{titlepage}%
-  % Tolesni puslapiai numeruojami įprastai
-  \pagenumbering{arabic}%
+  % Tolesni puslapiai numeruojami nuo antro
+  \setcounter{page}{2}%
   % Atlaisviname panaudotus kintamuosius
   \global\let\@outputtitle\relax
   \global\let\thanks\relax
@@ -336,18 +352,6 @@
 \renewcommand*\l@subsection{\@dottedtocline{2}{0.1cm}{0.87cm}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{0.8cm}{1.22cm}}
 \renewcommand*\l@paragraph{\@dottedtocline{4}{1.5cm}{1.52cm}}
-
-% Raktinių žodžių komandos
-\newcommand\keywords[1]{%
-    \par \bigskip \par
-    % \hangindent=\parindent   % Lygiavimas nuo antros eilutės
-    \noindent \textbf{Keywords:}\; \textbf{#1}
-}
-\newcommand\raktiniaizodziai[1]{%
-    \par \bigskip \par
-    % \hangindent=\parindent   % Lygiavimas nuo antros eilutės
-    \noindent \textbf{Raktiniai žodžiai:}\; \textbf{#1}
-}
 
 % Tarpai tarp išnašų eilučių nustatomi į 1,5 eilutės
 \let\oldfootnote\footnote
